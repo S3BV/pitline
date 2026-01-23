@@ -316,4 +316,11 @@ footer {
 
     nav ul { flex-direction: column; gap: 20px; text-align: center; }
     .logo { flex-grow: 1; }
+
+    /* Ajuste del fondo Hero para móviles */
+    .hero {
+        /* Cambiamos a 'scroll' porque 'fixed' genera un zoom excesivo en móviles */
+        background-attachment: scroll;
+        background-position: center center;
+    }
 }
