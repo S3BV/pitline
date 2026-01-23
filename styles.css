@@ -1,4 +1,5 @@
 /* --- VARIABLES Y CONFIGURACIÓN --- */
+/* Definimos la identidad visual de Pitline aquí. Si queremos cambiar el azul corporativo, solo lo hacemos en --primary */
 :root {
     --primary: #00387c;      /* azul pitline */
     --dark: #ffffff;         /* Fondo blanco (antes negro) */
@@ -14,11 +15,13 @@
     box-sizing: border-box;
 }
 
+/* Permite que al hacer clic en el menú, la página se deslice suavemente hacia la sección (UX mejorada) */
 html {
     scroll-behavior: smooth;
 }
 
 body {
+    /* Tipografía 'Exo 2' elegida para transmitir modernidad y velocidad, alineada con la marca automotriz */
     font-family: 'Exo 2', sans-serif;
     background-color: var(--dark);
     color: var(--light);
@@ -30,6 +33,7 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
 /* --- COMPONENTES GLOBALES (Botones y Títulos) --- */
+/* Botón principal de llamada a la acción (CTA). Es clave para la conversión de usuarios en Pitline */
 .btn-cta {
     padding: 10px 25px;
     background-color: white;
@@ -48,6 +52,7 @@ ul { list-style: none; }
 
 .section { padding: 100px 5%; }
 
+/* Estilo unificado para los títulos de cada sección (Servicios, Nosotros, Contacto) */
 .section-header {
     text-align: center;
     margin-bottom: 60px;
@@ -67,6 +72,7 @@ ul { list-style: none; }
 }
 
 /* --- HEADER --- */
+/* Barra de navegación fija: Mantiene el logo y menú visibles siempre, facilitando el acceso a la información */
 header {
     position: fixed;
     top: 0;
@@ -113,6 +119,7 @@ nav a {
 nav a:hover { color: var(--primary); }
 
 /* --- HERO SECTION --- */
+/* La portada principal. Diseñada para impactar visualmente y comunicar "Alto Rendimiento" de inmediato */
 .hero {
     height: 100vh;
     display: flex;
@@ -136,6 +143,7 @@ nav a:hover { color: var(--primary); }
     font-style: italic;
 }
 
+/* Efecto visual en el texto para destacar la palabra clave con el color corporativo */
 .hero-content h1 span {
     color: transparent;
     -webkit-text-stroke: 2px var(--primary);
@@ -156,6 +164,7 @@ nav a:hover { color: var(--primary); }
 }
 
 /* --- SERVICIOS --- */
+/* Grid flexible: Muestra las tarjetas de servicio de forma ordenada y se adapta a diferentes anchos de pantalla */
 .grid-services {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -163,6 +172,7 @@ nav a:hover { color: var(--primary); }
 }
 
 .card {
+    /* Tarjetas individuales que destacan cada pilar de negocio de Pitline */
     background-color: var(--dark-gray);
     padding: 40px;
     border-radius: 8px;
@@ -172,6 +182,7 @@ nav a:hover { color: var(--primary); }
     overflow: hidden;
 }
 
+/* Micro-interacción: La tarjeta se eleva al pasar el mouse para indicar que es interactiva */
 .card:hover {
     transform: translateY(-10px);
     border-color: var(--primary);
@@ -192,6 +203,7 @@ nav a:hover { color: var(--primary); }
 .card p { color: var(--gray); }
 
 /* --- NOSOTROS (Texto + Imagen) --- */
+/* Diseño de dos columnas para contar la historia de la empresa de manera visual y textual */
 .about-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -218,6 +230,7 @@ nav a:hover { color: var(--primary); }
 }
 
 /* --- CONTACTO --- */
+/* Sección crítica para captar clientes potenciales (Leads) */
 .contact-section { background-color: var(--dark-gray); }
 
 .form-container {
@@ -227,6 +240,7 @@ nav a:hover { color: var(--primary); }
 
 .form-group { margin-bottom: 20px; }
 
+/* Estilos de inputs para asegurar legibilidad y facilidad de escritura */
 input, textarea {
     width: 100%;
     padding: 15px;
@@ -266,6 +280,7 @@ footer {
 }
 
 /* --- RESPONSIVE --- */
+/* Ajustes para móviles: Asegura que el sitio sea usable en teléfonos (donde probablemente lleguen muchos clientes) */
 @media (max-width: 768px) {
     .hero-content h1 { font-size: 2.5rem; }
     .about-container { grid-template-columns: 1fr; }
