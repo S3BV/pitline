@@ -1,0 +1,274 @@
+/* --- VARIABLES Y CONFIGURACIÓN --- */
+:root {
+    --primary: #00387c;      /* azul pitline */
+    --dark: #ffffff;         /* Fondo blanco (antes negro) */
+    --dark-gray: #f4f6f8;    /* Gris claro para secciones */
+    --light: #333333;        /* Texto oscuro */
+    --gray: #555555;         /* Texto secundario */
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* --- COMPONENTES GLOBALES (Botones y Títulos) --- */
+.btn-cta {
+    padding: 10px 25px;
+    background-color: white;
+    color: var(--primary);
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: var(--transition);
+    border: 2px solid white;
+}
+
+.btn-cta:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.section { padding: 100px 5%; }
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.section-header .line {
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary);
+    margin: 0 auto;
+}
+
+/* --- HEADER --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 4px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white; /* Header blanco */
+    color: var(--light);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo span { color: var(--primary); }
+
+.logo img {
+    height: 100px; /* Ajusta este valor según el tamaño deseado */
+    width: auto;
+}
+
+nav ul { display: flex; gap: 30px; }
+
+nav a {
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+nav a:hover { color: var(--primary); }
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--light); /* Texto oscuro para fondo claro */
+    padding: 0 20px;
+    /* Fondo con degradado claro */
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('imagenes/fondo-cuadros-bandera-carreras-estilo-3d.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.hero-content h1 span {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--primary);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+/* Ajuste del botón para fondo claro */
+.hero .btn-cta {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* --- SERVICIOS --- */
+.grid-services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--dark-gray);
+    padding: 40px;
+    border-radius: 8px;
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+.card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.card p { color: var(--gray); }
+
+/* --- NOSOTROS (Texto + Imagen) --- */
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.about-text p { margin-bottom: 20px; color: var(--gray); }
+
+.about-img {
+    width: 100%;
+    height: 400px;
+    background-color: var(--dark-gray);
+    border-radius: 8px;
+    background-image: url('https://images.unsplash.com/photo-1486262715619-01b80250e0dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- CONTACTO --- */
+.contact-section { background-color: var(--dark-gray); }
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group { margin-bottom: 20px; }
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    font-family: inherit;
+    border-radius: 4px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+button[type="submit"]:hover { background-color: #cc0000; }
+
+/* --- FOOTER --- */
+footer {
+    padding: 50px 5%;
+    text-align: center;
+    border-top: 1px solid #eee;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    .about-container { grid-template-columns: 1fr; }
+    nav { display: none; } /* Oculto en móvil por simplicidad */
+    .logo { flex-grow: 1; text-align: center; }
+}
