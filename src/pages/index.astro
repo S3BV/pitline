@@ -10,7 +10,7 @@ const description =
   <header class="fixed top-0 z-50 w-full border-b border-black/10 bg-white/90 backdrop-blur">
     <div class="container-xl flex items-center justify-between py-3">
       <div class="flex items-center gap-3">
-        <img src="/imagenes/pitlinelogo2.jpg" alt="Logo Pitline" class="h-14 w-auto" />
+        <img src="/imagenes/pitlinelogo2-clean.webp" alt="Logo Pitline" class="h-14 w-auto" />
       </div>
 
       <button
@@ -33,7 +33,7 @@ const description =
     <nav
       id="mobile-menu"
       data-menu="mobile"
-      class="container-xl hidden flex-col gap-5 border-t border-black/10 bg-white py-6 text-xs font-semibold uppercase tracking-[0.2em] text-ink md:hidden"
+      class="container-xl flex max-h-0 flex-col gap-5 overflow-hidden border-t border-black/10 bg-white py-6 text-xs font-semibold uppercase tracking-[0.2em] text-ink opacity-0 pointer-events-none transition-[max-height,opacity] duration-300 ease-out md:hidden [&.is-open]:max-h-96 [&.is-open]:opacity-100 [&.is-open]:pointer-events-auto"
     >
       <a class="transition hover:text-pitline" href="#inicio">Inicio</a>
       <a class="transition hover:text-pitline" href="#servicios">Servicios</a>
@@ -48,7 +48,7 @@ const description =
       class="relative flex min-h-screen items-center justify-center overflow-hidden bg-white pt-24"
     >
       <div
-        class="absolute inset-0 bg-[url('/imagenes/fondo-cuadros-bandera-carreras-estilo-3d.jpg')] bg-cover bg-center"
+        class="absolute inset-0 bg-[url('/imagenes/fondo-cuadros-bandera-carreras-estilo-3d.webp')] bg-cover bg-center"
       ></div>
       <div class="absolute inset-0 bg-white/90"></div>
 

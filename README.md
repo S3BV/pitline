@@ -3,13 +3,17 @@
 Sitio de Pitline construido con Astro + Tailwind CSS.
 
 ## Requisitos
-- Node.js 18+
+- Node.js 18.17+ (recomendado 20.x)
 
 ## Comandos
 - `npm install`
 - `npm run dev`
 - `npm run build`
 - `npm run preview`
+
+## Assets (WebP)
+- Todas las imágenes en `public/imagenes/` están en formato WebP.
+- Si agregas nuevas imágenes, conviértelas a WebP antes de usarlas.
 
 ## GitHub Pages
 
