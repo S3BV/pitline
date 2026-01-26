@@ -98,7 +98,7 @@ const description =
           <article class="rounded-xl border border-black/10 bg-cloud p-8 shadow-soft">
             <div class="text-3xl text-pitline">🎨</div>
             <h3 class="mt-4 text-xl font-bold uppercase">Branding</h3>
-            <p class="mt-3 text-sm text-slate">Diseño de identidad visual para tu negocio.</p>
+            <p class="mt-3 text-sm text-slate">Diseñamos la identidad visual para tu negocio.</p>
           </article>
         </div>
       </div>
@@ -107,9 +107,9 @@ const description =
     <section id="nosotros" class="bg-cloud py-20">
       <div class="container-xl grid gap-10 lg:grid-cols-2 lg:items-center">
         <div
-          class="h-80 w-full rounded-xl bg-[url('https://images.unsplash.com/photo-1486262715619-01b80250e0dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80')] bg-cover bg-center"
+          class="h-80 w-full rounded-xl bg-[url('/imagenes/pitlinelogo2-clean-235.webp')] bg-contain bg-center bg-no-repeat"
           role="img"
-          aria-label="Equipo Pitline"
+          aria-label="Logo Pitline"
         ></div>
         <div>
           <h2 class="section-title">Sobre Pitline</h2>
@@ -190,5 +190,16 @@ const description =
   if (params.get('success') === '1') {
     const msg = document.getElementById('form-success');
     if (msg) msg.classList.remove('hidden');
+  }
+
+  const menuToggle = document.querySelector('[data-menu-toggle]');
+  const mobileMenu = document.querySelector('[data-menu="mobile"]');
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('is-open');
+    });
   }
 </script>
