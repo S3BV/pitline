@@ -1,0 +1,97 @@
+﻿---
+import "../styles/global.css";
+const {
+  title = "Pitline - Soluciones de Alto Rendimiento",
+  description =
+    "Pitline: Expertos en optimización, servicios automotrices y soluciones integrales en Chile.",
+  canonical,
+  image = "/imagenes/pitlinelogo2.jpg",
+} = Astro.props;
+
+const site = (Astro.site?.toString() ?? "https://pitline.cl").replace(/\/$/, "");
+const canonicalUrl = canonical ?? `${site}${Astro.url.pathname}`;
+const imageUrl = image.startsWith("http") ? image : `${site}${image}`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  name: "Pitline",
+  url: site,
+  logo: `${site}/imagenes/pitlinelogo2.jpg`,
+  image: imageUrl,
+  description,
+  areaServed: ["Chile"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Santiago",
+    addressCountry: "CL",
+  },
+  email: "contacto@pitline.cl",
+};
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Pitline" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pitline" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+
+    <meta name="theme-color" content="#00387c" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,700;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json">
+      {JSON.stringify(jsonLd)}
+    </script>
+  </head>
+  <body class="min-h-screen">
+    <a
+      href="#contenido"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+    >
+      Saltar al contenido
+    </a>
+    <slot />
+    <script is:inline>
+      const menuButton = document.querySelector('[data-menu-toggle]');
+      const menu = document.querySelector('[data-menu="mobile"]');
+
+      if (menuButton && menu) {
+        menuButton.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+          const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+          menuButton.setAttribute('aria-expanded', String(!expanded));
+        });
+
+        menu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+              menu.classList.add('hidden');
+              menuButton.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+﻿---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Pitline - Soluciones de Alto Rendimiento";
+const description =
+  "Pitline: Expertos en optimización, servicios automotrices y soluciones integrales en Chile.";
+---
+
+<BaseLayout title={title} description={description}>
+  <header class="fixed top-0 z-50 w-full border-b border-black/10 bg-white/90 backdrop-blur">
+    <div class="container-xl flex items-center justify-between py-3">
+      <div class="flex items-center gap-3">
+        <img src="/imagenes/pitlinelogo2.jpg" alt="Logo Pitline" class="h-14 w-auto" />
+      </div>
+
+      <button
+        class="rounded-md border border-pitline/40 px-3 py-2 text-sm font-semibold uppercase tracking-wide text-pitline md:hidden"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        Menú
+      </button>
+
+      <nav class="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.2em] text-ink md:flex">
+        <a class="transition hover:text-pitline" href="#inicio">Inicio</a>
+        <a class="transition hover:text-pitline" href="#servicios">Servicios</a>
+        <a class="transition hover:text-pitline" href="#nosotros">Nosotros</a>
+        <a class="btn-primary" href="#contacto">Contacto</a>
+      </nav>
+    </div>
+
+    <nav
+      id="mobile-menu"
+      data-menu="mobile"
+      class="container-xl hidden flex-col gap-5 border-t border-black/10 bg-white py-6 text-xs font-semibold uppercase tracking-[0.2em] text-ink md:hidden"
+    >
+      <a class="transition hover:text-pitline" href="#inicio">Inicio</a>
+      <a class="transition hover:text-pitline" href="#servicios">Servicios</a>
+      <a class="transition hover:text-pitline" href="#nosotros">Nosotros</a>
+      <a class="btn-primary" href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section
+      id="inicio"
+      class="relative flex min-h-screen items-center justify-center overflow-hidden bg-white pt-24"
+    >
+      <div
+        class="absolute inset-0 bg-[url('/imagenes/fondo-cuadros-bandera-carreras-estilo-3d.jpg')] bg-cover bg-center"
+      ></div>
+      <div class="absolute inset-0 bg-white/90"></div>
+
+      <div class="container-xl relative text-center">
+        <h1 class="text-4xl font-black uppercase tracking-wide text-ink md:text-6xl">
+          Precisión en <br /><span class="text-pitline">Movimiento</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-base text-slate md:text-lg">
+          Llevamos tu rendimiento al máximo nivel. Soluciones empresariales profesionales, rápidas y eficientes para
+          clientes exigentes.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a class="btn-primary" href="#servicios">Ver Servicios</a>
+          <a class="btn-outline border-pitline text-pitline hover:bg-pitline hover:text-white" href="#contacto"
+            >Hablemos</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="py-20">
+      <div class="container-xl">
+        <div class="text-center">
+          <h2 class="section-title">Nuestros Servicios</h2>
+          <div class="mx-auto mt-4 h-1 w-16 bg-pitline"></div>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="rounded-xl border border-black/10 bg-cloud p-8 shadow-soft">
+            <div class="text-3xl text-pitline">👔</div>
+            <h3 class="mt-4 text-xl font-bold uppercase">Consultoría</h3>
+            <p class="mt-3 text-sm text-slate">
+              Asesoría especializada en la optimización de sistemas y procesos para mejorar la eficiencia tecnológica.
+            </p>
+          </article>
+          <article class="rounded-xl border border-black/10 bg-cloud p-8 shadow-soft">
+            <div class="text-3xl text-pitline">💻</div>
+            <h3 class="mt-4 text-xl font-bold uppercase">Desarrollo de Software</h3>
+            <p class="mt-3 text-sm text-slate">
+              Desarrollo de software personalizado para mejorar la eficiencia y la productividad de tu negocio.
+            </p>
+          </article>
+          <article class="rounded-xl border border-black/10 bg-cloud p-8 shadow-soft">
+            <div class="text-3xl text-pitline">🎨</div>
+            <h3 class="mt-4 text-xl font-bold uppercase">Branding</h3>
+            <p class="mt-3 text-sm text-slate">Diseño de identidad visual para tu negocio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros" class="bg-cloud py-20">
+      <div class="container-xl grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div
+          class="h-80 w-full rounded-xl bg-[url('https://images.unsplash.com/photo-1486262715619-01b80250e0dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80')] bg-cover bg-center"
+          role="img"
+          aria-label="Equipo Pitline"
+        ></div>
+        <div>
+          <h2 class="section-title">Sobre Pitline</h2>
+          <p class="mt-6 text-base text-slate">
+            Nacimos con la convicción de que la velocidad no sirve de nada sin control. En Pitline, combinamos
+            experiencia técnica con una pasión por la excelencia.
+          </p>
+          <p class="mt-4 text-base text-slate">
+            Nuestro equipo está formado por especialistas dedicados a resolver problemas complejos de manera simple y
+            efectiva. Ya sea en la pista o en la oficina, somos tu aliado estratégico.
+          </p>
+          <a class="mt-6 inline-flex font-semibold text-pitline" href="#contacto">Hablemos de tu proyecto →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="py-20">
+      <div class="container-xl">
+        <div class="text-center">
+          <h2 class="section-title">Contáctanos</h2>
+          <div class="mx-auto mt-4 h-1 w-16 bg-pitline"></div>
+        </div>
+
+        <div class="mx-auto mt-10 max-w-xl rounded-xl border border-black/10 bg-white p-8 shadow-soft">
+          <form class="space-y-5">
+            <div>
+              <input
+                type="text"
+                placeholder="Nombre completo"
+                class="w-full rounded-md border border-black/10 px-4 py-3 text-sm focus:border-pitline focus:outline-none"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                placeholder="Correo electrónico"
+                class="w-full rounded-md border border-black/10 px-4 py-3 text-sm focus:border-pitline focus:outline-none"
+                required
+              />
+            </div>
+            <div>
+              <textarea
+                rows="5"
+                placeholder="¿En qué podemos ayudarte?"
+                class="w-full rounded-md border border-black/10 px-4 py-3 text-sm focus:border-pitline focus:outline-none"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full">Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-black/10 bg-white py-10">
+    <div class="container-xl text-center text-sm text-slate">
+      <p>© 2024 Pitline Chile. Todos los derechos reservados.</p>
+      <p class="mt-2">Santiago, Chile | contacto@pitline.cl</p>
+    </div>
+  </footer>
+</BaseLayout>
