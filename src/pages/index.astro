@@ -7,14 +7,18 @@ const description =
 ---
 
 <BaseLayout title={title} description={description}>
-  <header class="fixed top-0 z-50 w-full border-b border-black/10 bg-white/90 backdrop-blur">
-    <div class="container-xl flex items-center justify-between py-3">
+  <header class="fixed top-0 z-50 w-full border-b border-black/10 bg-white/90 leading-none backdrop-blur">
+    <div class="container-xl flex items-center justify-between py-1">
       <div class="flex items-center gap-3">
-        <img src="/imagenes/pitlinelogo2-clean.webp" alt="Logo Pitline" class="h-14 w-auto" />
+        <img
+          src="/imagenes/pitlinelogo2-clean-235.webp"
+          alt="Logo Pitline"
+          class="h-[clamp(3.5rem,6vw,4.5rem)] w-auto"
+        />
       </div>
 
       <button
-        class="rounded-md border border-pitline/40 px-3 py-2 text-sm font-semibold uppercase tracking-wide text-pitline md:hidden"
+        class="rounded-md border border-pitline/40 px-3 py-2 text-sm font-semibold uppercase tracking-wide text-pitline leading-none md:hidden"
         data-menu-toggle
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -130,11 +134,20 @@ const description =
         </div>
 
         <div class="mx-auto mt-10 max-w-xl rounded-xl border border-black/10 bg-white p-8 shadow-soft">
-          <form class="space-y-5">
+          <form class="space-y-5" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="2e076681-78d6-4cfd-b652-b923f633f7c2" />
+            <input type="hidden" name="subject" value="Nuevo contacto desde Pitline" />
+            <input type="hidden" name="from_name" value="Pitline Web" />
+            <input type="hidden" name="redirect" value="https://pitline.cl/?success=1#contacto" />
+            <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+            <p id="form-success" class="hidden rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+              ¡Mensaje enviado con éxito! Te responderemos a la brevedad.
+            </p>
             <div>
               <input
                 type="text"
                 placeholder="Nombre completo"
+                name="name"
                 class="w-full rounded-md border border-black/10 px-4 py-3 text-sm focus:border-pitline focus:outline-none"
                 required
               />
@@ -143,6 +156,7 @@ const description =
               <input
                 type="email"
                 placeholder="Correo electrónico"
+                name="email"
                 class="w-full rounded-md border border-black/10 px-4 py-3 text-sm focus:border-pitline focus:outline-none"
                 required
               />
@@ -151,6 +165,7 @@ const description =
               <textarea
                 rows="5"
                 placeholder="¿En qué podemos ayudarte?"
+                name="message"
                 class="w-full rounded-md border border-black/10 px-4 py-3 text-sm focus:border-pitline focus:outline-none"
                 required
               ></textarea>
@@ -169,3 +184,11 @@ const description =
     </div>
   </footer>
 </BaseLayout>
+
+<script is:inline>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('success') === '1') {
+    const msg = document.getElementById('form-success');
+    if (msg) msg.classList.remove('hidden');
+  }
+</script>
