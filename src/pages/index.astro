@@ -191,15 +191,4 @@ const description =
     const msg = document.getElementById('form-success');
     if (msg) msg.classList.remove('hidden');
   }
-
-  const menuToggle = document.querySelector('[data-menu-toggle]');
-  const mobileMenu = document.querySelector('[data-menu="mobile"]');
-
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', !isExpanded);
-      mobileMenu.classList.toggle('is-open');
-    });
-  }
 </script>
