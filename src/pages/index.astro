@@ -149,6 +149,12 @@ const description =
             <input type="hidden" name="from_name" value="Pitline Web" />
             <input type="hidden" name="redirect" value="https://pitline.cl/?success=1#contacto" />
             <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+            <p
+              id="form-error"
+              class="hidden rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+            >
+              Revisa los campos marcados e intenta nuevamente.
+            </p>
             <p id="form-success" class="hidden rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
               ¡Mensaje enviado con éxito! Te responderemos a la brevedad.
             </p>
@@ -157,6 +163,9 @@ const description =
                 type="text"
                 placeholder="Nombre completo"
                 name="name"
+                minlength="2"
+                pattern="^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]{2,}$"
+                title="Ingresa al menos 2 letras. No se permiten símbolos ni números."
                 class="w-full rounded-md border border-black/10 px-4 py-3 text-sm focus:border-pitline focus:outline-none"
                 required
               />
@@ -166,6 +175,8 @@ const description =
                 type="email"
                 placeholder="Correo electrónico"
                 name="email"
+                pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$"
+                title="Ingresa un correo válido. Ej: nombre@dominio.com"
                 class="w-full rounded-md border border-black/10 px-4 py-3 text-sm focus:border-pitline focus:outline-none"
                 required
               />
@@ -175,6 +186,8 @@ const description =
                 rows="5"
                 placeholder="¿En qué podemos ayudarte?"
                 name="message"
+                minlength="10"
+                title="El mensaje debe tener al menos 10 caracteres."
                 class="w-full rounded-md border border-black/10 px-4 py-3 text-sm focus:border-pitline focus:outline-none"
                 required
               ></textarea>
@@ -199,5 +212,76 @@ const description =
   if (params.get('success') === '1') {
     const msg = document.getElementById('form-success');
     if (msg) msg.classList.remove('hidden');
+  }
+
+  const form = document.querySelector('form[action="https://api.web3forms.com/submit"]');
+  if (form) {
+    const nameInput = form.querySelector('input[name="name"]');
+    const emailInput = form.querySelector('input[name="email"]');
+    const messageInput = form.querySelector('textarea[name="message"]');
+    const errorBox = document.getElementById('form-error');
+
+    const nameRegex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]{2,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const vowelRegex = /[AEIOUÁÉÍÓÚÜaeiouáéíóúü]/;
+    const consonantRunRegex = /[BCDFGHJKLMNPQRSTVWXYZÑbcdfghjklmnpqrstvwxyzñ]{4,}/;
+    const repeatedCharRegex = /(.)\1{2,}/;
+    const messageNoiseRegex = /[BCDFGHJKLMNPQRSTVWXYZÑbcdfghjklmnpqrstvwxyzñ]{5,}/;
+    const sqlPattern = /('|\"|;|--|\/\*|\*\/|\\x00|\\bunion\\b|\\bselect\\b|\\binsert\\b|\\bupdate\\b|\\bdelete\\b|\\bdrop\\b|\\btruncate\\b|\\bexec\\b|\\bxp_\\b)/i;
+    const hasSqlInjection = (value) => sqlPattern.test(value);
+
+    const clearError = () => {
+      if (errorBox) errorBox.classList.add('hidden');
+    };
+
+    [nameInput, emailInput, messageInput].forEach((el) => {
+      if (!el) return;
+      el.addEventListener('input', () => el.setCustomValidity(''));
+    });
+
+    form.addEventListener('submit', (event) => {
+      let valid = true;
+      if (nameInput) {
+        const nameValue = nameInput.value.trim();
+        const nameIsValid =
+          nameRegex.test(nameValue) &&
+          !repeatedCharRegex.test(nameValue.replace(/ /g, '')) &&
+          vowelRegex.test(nameValue) &&
+          !consonantRunRegex.test(nameValue) &&
+          !hasSqlInjection(nameValue);
+        if (!nameIsValid) {
+          nameInput.setCustomValidity('Nombre inválido.');
+          valid = false;
+        }
+      }
+      if (emailInput) {
+        const emailValue = emailInput.value.trim();
+        if (!emailRegex.test(emailValue) || hasSqlInjection(emailValue)) {
+          emailInput.setCustomValidity('Correo inválido.');
+          valid = false;
+        }
+      }
+      if (messageInput) {
+        const messageValue = messageInput.value.trim();
+        const cleanMessage = messageValue.replace(/\s+/g, '');
+        const messageIsValid =
+          messageValue.length >= 10 &&
+          !repeatedCharRegex.test(cleanMessage) &&
+          (vowelRegex.test(messageValue) && !messageNoiseRegex.test(messageValue)) &&
+          !hasSqlInjection(messageValue);
+        if (!messageIsValid) {
+          messageInput.setCustomValidity('Mensaje inválido.');
+          valid = false;
+        }
+      }
+
+      if (!valid) {
+        event.preventDefault();
+        if (errorBox) errorBox.classList.remove('hidden');
+        form.reportValidity();
+      } else {
+        clearError();
+      }
+    });
   }
 </script>

@@ -1,4 +1,5 @@
 ﻿---
+import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 const {
   title = "Pitline - Soluciones de Alto Rendimiento",
@@ -31,6 +32,7 @@ const jsonLd = {
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <ViewTransitions />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
@@ -92,6 +94,7 @@ const jsonLd = {
           });
         });
       }
+
     </script>
   </body>
 </html>
