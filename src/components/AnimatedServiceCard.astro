@@ -1,0 +1,43 @@
+﻿---
+const {
+  href,
+  title,
+  description,
+  stillSrc,
+  animSrc,
+  className = "",
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class={`group relative overflow-hidden snap-center rounded-2xl border border-black/10 p-6 shadow-soft transition hover:-translate-y-1 hover:border-pitline/40 focus:outline-none focus:ring-2 focus:ring-pitline/50 ${className}`}
+  data-anim-card
+>
+  <div class="absolute inset-0">
+    <img
+      src={stillSrc}
+      alt=""
+      data-anim-still
+      class="h-full w-full object-cover opacity-100 transition-opacity duration-500 ease-out"
+      aria-hidden="true"
+    />
+    <img
+      src=""
+      alt=""
+      data-anim
+      data-anim-src={animSrc}
+      class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 ease-out"
+      aria-hidden="true"
+    />
+    <div class="absolute inset-0 bg-black/35 opacity-0 transition-opacity duration-500 ease-out" data-anim-overlay></div>
+  </div>
+  <div class="relative z-10">
+    <h3 class="text-xl font-bold uppercase text-pitline transition-colors duration-300 group-hover:text-white group-focus-within:text-white group-active:text-white">
+      {title}
+    </h3>
+    <p class="mt-2 text-sm text-slate transition-colors duration-300 group-hover:text-white/90 group-focus-within:text-white/90 group-active:text-white/90">
+      {description}
+    </p>
+  </div>
+</a>

@@ -96,5 +96,43 @@ const jsonLd = {
       }
 
     </script>
+    <script is:inline>
+      const animCards = document.querySelectorAll('[data-anim-card]');
+      animCards.forEach((card) => {
+        const animImg = card.querySelector('[data-anim]');
+        const stillImg = card.querySelector('[data-anim-still]');
+        const overlay = card.querySelector('[data-anim-overlay]');
+        if (!animImg) return;
+
+        const baseSrc = (animImg.getAttribute('data-anim-src') || '').split('?')[0];
+        if (!baseSrc) return;
+
+        const start = () => {
+          animImg.setAttribute('src', `${baseSrc}?t=${Date.now()}`);
+          animImg.classList.add('opacity-100');
+          animImg.classList.remove('opacity-0');
+          stillImg?.classList.add('opacity-0');
+          stillImg?.classList.remove('opacity-100');
+          overlay?.classList.add('opacity-100');
+          overlay?.classList.remove('opacity-0');
+        };
+
+        const stop = () => {
+          animImg.setAttribute('src', '');
+          animImg.classList.add('opacity-0');
+          animImg.classList.remove('opacity-100');
+          stillImg?.classList.add('opacity-100');
+          stillImg?.classList.remove('opacity-0');
+          overlay?.classList.add('opacity-0');
+          overlay?.classList.remove('opacity-100');
+        };
+
+        card.addEventListener('mouseenter', start);
+        card.addEventListener('focusin', start);
+        card.addEventListener('touchstart', start, { passive: true });
+        card.addEventListener('mouseleave', stop);
+        card.addEventListener('focusout', stop);
+      });
+    </script>
   </body>
 </html>
