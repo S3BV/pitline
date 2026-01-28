@@ -140,6 +140,7 @@ const description =
     inset: 0;
     background-image: linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)),
       url("/imagenes/codedev.webp");
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -148,8 +149,9 @@ const description =
   @media (max-width: 768px) {
     .dev-page::before {
       position: absolute;
-      background-size: 100% auto;
-      background-position: top center;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
   }
 </style>
