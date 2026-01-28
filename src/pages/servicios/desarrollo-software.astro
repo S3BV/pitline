@@ -53,6 +53,8 @@ const description =
                 src="/imagenes/mvp.webp"
                 alt=""
                 class="h-44 w-full rounded-xl object-cover"
+                loading="lazy"
+                decoding="async"
                 aria-hidden="true"
               />
               <h3 class="mt-4 text-lg font-bold uppercase text-pitline">Ingeniería de Producto (MVP)</h3>
@@ -69,6 +71,8 @@ const description =
                 src="/imagenes/automat.webp"
                 alt=""
                 class="h-44 w-full rounded-xl object-cover"
+                loading="lazy"
+                decoding="async"
                 aria-hidden="true"
               />
               <h3 class="mt-4 text-lg font-bold uppercase text-pitline">
@@ -88,6 +92,8 @@ const description =
                 src="/imagenes/codedev.webp"
                 alt=""
                 class="h-44 w-full rounded-xl object-cover"
+                loading="lazy"
+                decoding="async"
                 aria-hidden="true"
               />
             </div>
@@ -137,5 +143,11 @@ const description =
     background-size: cover;
     background-position: center;
     z-index: -1;
+  }
+
+  @media (max-width: 768px) {
+    .dev-page::before {
+      position: absolute;
+    }
   }
 </style>
